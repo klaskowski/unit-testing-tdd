@@ -14,7 +14,7 @@ public class AdvancedCalculator {
         for (int i=1; i<=x; i++){
             wynik *= i;
         }
-        
+
         return wynik;
     }
 
