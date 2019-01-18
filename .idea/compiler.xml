@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="ut-playground" target="1.5" />
+      <module name="ut-playground" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
