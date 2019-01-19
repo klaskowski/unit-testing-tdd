@@ -1,9 +1,6 @@
 package examples;
 
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
@@ -24,7 +21,7 @@ public class FibonacciTest {
 
     @Test
     public void testFibonacciWithLargeNumber() {
-        int result = fibonacci.calculateFor(46);
+        int result = fibonacci.calculateFor(-2);
 
         assertEquals(result, 1836311903);
     }

@@ -25,4 +25,24 @@ public class FibonacciParameterizedTest {
     public void testFibonacciForCertainValues(int x, int expectedResult) {
         Assert.assertEquals(new Fibonacci().calculateFor(x), expectedResult);
     }
+
+    @Test
+    @Parameters({
+            "ala, ma psa"
+    })
+    public void testStringParameters(String a, String b) {
+        Assert.assertEquals(a.concat(b), ("ala ma psa"));
+    }
+
+    public String[][] testValues() {
+        String[] pair = {"ala", " ma psa"};
+        String[][] testValues= {pair};
+        return testValues;
+    }
+
+    @Test
+    @Parameters(method = "testValues")
+    public void testStringParametersFromMethod(String a, String b) {
+        Assert.assertEquals(a.concat(b), ("ala ma psa"));
+    }
 }
