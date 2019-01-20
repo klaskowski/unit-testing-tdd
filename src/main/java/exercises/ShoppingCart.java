@@ -6,10 +6,12 @@ import java.util.List;
 public class ShoppingCart {
     private List<ProductOrder> orders;
     private DatabaseAccessObject<ShoppingCart> dao;
+    private DatabaseAccessObject<ProductOrder> productDao;
 
-    public ShoppingCart(DatabaseAccessObject <ShoppingCart>dao) {
-        this.orders = new ArrayList<>();
+    public ShoppingCart(DatabaseAccessObject <ShoppingCart>dao, DatabaseAccessObject <ProductOrder> productDao) {
         this.dao = dao;
+        this.productDao = productDao;
+        this.orders = productDao.loadFromDb();
     }
 
     public List<ProductOrder> listProducts() {
@@ -27,8 +29,7 @@ public class ShoppingCart {
         } else {
             orders.add(newProductOrder);
         }
-        // TODO: uncomment after part "7. Mocking"
-        // persist();
+        persist();
     }
 
     public void removeProduct(String productName) {
@@ -37,8 +38,7 @@ public class ShoppingCart {
             .filter(order -> order.getProductName().equals(productName))
             .findFirst()
             .ifPresent(order -> orders.remove(order));
-        // TODO: uncomment after part "7. Mocking"
-        // persist();
+        persist();
     }
 
     public void setProductQuantity(String productName, int productQuantity) {
@@ -52,4 +52,6 @@ public class ShoppingCart {
     private void persist() {
         dao.saveToDb(this);
     }
+
+    private void load() { this.orders = productDao.loadFromDb(); }
 }

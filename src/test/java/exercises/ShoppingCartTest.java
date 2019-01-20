@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 public class ShoppingCartTest {
 
@@ -13,7 +14,7 @@ public class ShoppingCartTest {
 
     @Before
     public void setUp() {
-        cart = new ShoppingCart(new DatabaseAccessObject<>());
+        cart = new ShoppingCart(new DatabaseAccessObject<>(), new DatabaseAccessObject<>());
         productOrder = new ProductOrder("Aparat Canon", 1, 1800.00);
     }
 
