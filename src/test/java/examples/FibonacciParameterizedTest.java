@@ -28,7 +28,7 @@ public class FibonacciParameterizedTest {
 
     @Test
     @Parameters({
-            "ala, ma psa"
+            "ala,  ma psa"
     })
     public void testStringParameters(String a, String b) {
         Assert.assertEquals(a.concat(b), ("ala ma psa"));
@@ -46,3 +46,16 @@ public class FibonacciParameterizedTest {
         Assert.assertEquals(a.concat(b), ("ala ma psa"));
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
