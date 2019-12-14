@@ -4,6 +4,10 @@ import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
@@ -11,11 +15,18 @@ public class ShoppingCartTest {
 
     ShoppingCart cart;
     ProductOrder productOrder;
+    DatabaseAccessObject<ShoppingCart> shoppingCartDaoMock = mock(DatabaseAccessObject.class);
+    DatabaseAccessObject<ProductOrder> productDaoMock = mock(DatabaseAccessObject.class);
 
     @Before
     public void setUp() {
-        cart = new ShoppingCart(new DatabaseAccessObject<>(), new DatabaseAccessObject<>());
+        List<ProductOrder> testList = new ArrayList<ProductOrder>();
+
+        cart = new ShoppingCart(shoppingCartDaoMock, productDaoMock);
         productOrder = new ProductOrder("Aparat Canon", 1, 1800.00);
+
+        testList.add(productOrder);
+        when(productDaoMock.loadFromDb()).thenReturn(testList);
     }
 
     @Test
